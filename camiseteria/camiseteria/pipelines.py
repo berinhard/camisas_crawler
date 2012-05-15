@@ -24,6 +24,6 @@ class CamiseteriaPipeline(object):
         conn.upload_file(tmp_file, '/Public/', file_name)
 
     def _get_dropbox_connection(self):
-        db_user = 'bernardo@yourjetpack.com.br'
+        db_user = os.environ.get('DROPBOX_USER')
         db_pass = os.environ.get('DROPBOX_PASSWD')
         return DropboxConnection(db_user, db_pass)
