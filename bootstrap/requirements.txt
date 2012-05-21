@@ -1,4 +1,4 @@
 scrapy
 ipython
 ipdb
-simpledropbox
+mechanize
