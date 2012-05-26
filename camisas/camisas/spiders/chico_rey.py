@@ -12,6 +12,11 @@ class ChicoReiSpider(BaseSpider):
     start_urls = ['http://www.chicorei.com/5-camisetas/masculino/todas/todas/1/50']
 
     def parse(self, response):
+        items = self.parse_tshirt(response)
+        items += self.parse_pages(response)
+        return items
+
+    def parse_tshirt(self, response):
         tshirts = []
         hxs = HtmlXPathSelector(response)
         groups = hxs.select('//li[@id="foto_small"]')
@@ -30,3 +35,13 @@ class ChicoReiSpider(BaseSpider):
             tshirts.append(item)
 
         return tshirts
+
+    def parse_pages(self, response):
+        new_requests = []
+        hxs = HtmlXPathSelector(response)
+        page_links = list(set(hxs.select('//ul[@class="pagination"]/li/a/@href').extract()))
+
+        for link in page_links:
+            new_requests.append(Request(link, callback=self.parse_tshirt))
+
+        return new_requests
