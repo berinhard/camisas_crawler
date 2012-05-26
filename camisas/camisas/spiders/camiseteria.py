@@ -3,7 +3,7 @@ import re
 from scrapy.spider import BaseSpider
 from scrapy.selector import HtmlXPathSelector
 
-from ..items import CamiseteriaItem
+from ..items import CamisaItem
 
 
 class CamiseteriaSpider(BaseSpider):
@@ -23,7 +23,7 @@ class CamiseteriaSpider(BaseSpider):
             image_style = group.select('.//td[@width=184]/div/@style').extract()[0]
             image_url = re.findall('\(([^)]+)\)', image_style)[0]
 
-            item = CamiseteriaItem()
+            item = CamisaItem()
             item['name'] = name
             item['tshirt_url'] = tshirt_url
             item['image_url'] = image_url
