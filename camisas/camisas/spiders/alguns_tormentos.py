@@ -5,7 +5,7 @@ from scrapy.http import Request
 from ..items import CamisaItem
 
 
-class CamiseteriaSpider(BaseSpider):
+class AlgunsTormentosSpider(BaseSpider):
     name = 'alguns_tormentos'
     start_urls = ['http://www.algunstormentos.com/colecao.php']
     DOMAIN = 'http://www.algunstormentos.com/'
