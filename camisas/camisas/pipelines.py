@@ -3,7 +3,7 @@ import simplejson as json
 
 from .dbconn import DropboxConnection
 
-class CamiseteriaPipeline(object):
+class CamisasPipeline(object):
 
     def __init__(self):
         self.dict_items = []
